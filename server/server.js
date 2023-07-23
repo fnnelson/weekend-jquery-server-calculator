@@ -4,6 +4,26 @@ const app = express();
 const port = 5000;
 
 let inputCalculation;
+let calcHistoryArray = [];
+
+
+function calculator(inputCalcObject) {
+    let calcAnswer;
+    if (inputCalcObject.operator == 'addition') {
+        // since POST seems to change number values into strings, I added Number here whereas the other operators coerce the string values back into a number
+        calcAnswer = Number(inputCalcObject.num1) + Number(inputCalcObject.num2);
+    } else if (inputCalcObject.operator == 'subtraction') {
+        calcAnswer = inputCalcObject.num1 - inputCalcObject.num2;
+    } else if (inputCalcObject.operator == 'multiplication') {
+        calcAnswer = inputCalcObject.num1 * inputCalcObject.num2;
+    } else if (inputCalcObject.operator == 'division') {
+        calcAnswer = inputCalcObject.num1 / inputCalcObject.num2;
+    }
+    inputCalcObject.answer = calcAnswer;
+    console.log("inputCalcObject is now:", inputCalcObject);
+    calcHistoryArray.unshift(inputCalcObject);
+    console.log("calcHistoryArray is now:", calcHistoryArray);
+}
 
 
 // This must be added before GET & POST routes.
@@ -22,6 +42,7 @@ app.post('/calc', (req, res) => {
         inputCalculation = req.body
         console.log('inputCalculation is now:',
             inputCalculation);
+        calculator(inputCalculation);
         // res.sendStatus(201)
     }
 })
