@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <title>Weekend jQuery Server Calculator</title>
 </head>
 
@@ -14,16 +14,16 @@
     <h1>Server Side Calculator</h1>
 
     <form>
-        <input type="number" placeholder="number 1">
+        <input type="number" placeholder="number 1" id="input-number-one">
         <span class="button-group">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>/</button>
+            <button class="operator-btn" id="addition">+</button>
+            <button class="operator-btn" id="subtraction">-</button>
+            <button class="operator-btn" id="multiplication">*</button>
+            <button class="operator-btn" id="division">/</button>
         </span>
-        <input type="number" placeholder="number 2">
-        <button>=</button>
-        <button>C</button>
+        <input type="number" placeholder="number 2" id="input-number-two">
+        <button id="equals-button">=</button>
+        <button id="clear-button">C</button>
     </form>
     <div>
         <h2>0</h2>
