@@ -7,6 +7,7 @@ function onReady() {
     // console.log("jquery ready!")
     $('.operator-btn').on('click', handleOperator)
     $('#equals-button').on('click', handleEquals);
+    $('#clear-button').on('click', handleClear);
 
     // this function added here so that when we refresh the page the history still shows on the DOM
     updateCalcHistory();
@@ -51,6 +52,13 @@ function handleEquals(event) {
 
     // here we will have to reset operatorType 
     // may want to empty inputs? 
+}
+
+function handleClear() {
+    // $('#input-number-one').val("");
+    // $('#input-number-two').val("");
+
+    // I actually found it better to just allow the event's default since it refreshes the page, and resets the operator as well
 }
 
 function updateCalcHistory() {

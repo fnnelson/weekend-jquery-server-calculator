@@ -23,9 +23,9 @@ function calculator(inputCalcObject) {
         calcAnswer = inputCalcObject.num1 / inputCalcObject.num2;
     }
     inputCalcObject.answer = calcAnswer;
-    console.log("inputCalcObject is now:", inputCalcObject);
+    // console.log("inputCalcObject is now:", inputCalcObject);
     calcHistoryArray.unshift(inputCalcObject);
-    console.log("calcHistoryArray is now:", calcHistoryArray);
+    // console.log("calcHistoryArray is now:", calcHistoryArray);
 }
 
 
