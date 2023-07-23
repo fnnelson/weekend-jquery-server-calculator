@@ -1,6 +1,7 @@
 $(document).ready(onReady);
 
 let operatorType;
+let calcHistory;
 
 function onReady() {
     // console.log("jquery ready!")
@@ -13,7 +14,7 @@ function handleOperator(event) {
     event.preventDefault();
     // this assigns the latest-clicked operator to operatorType
     operatorType = $(this).attr('id');
-    console.log(operatorType);
+    console.log('operator type:', operatorType);
 }
 
 function handleEquals(event) {
@@ -39,6 +40,7 @@ function handleEquals(event) {
         data: calculationObject
     }).then((response) => {
         // may want to add the function to append here?
+        updateCalcHistory();
         console.log("POST was successful:", response);
     }).catch((error) => {
         console.log('error caught:', error);
@@ -47,5 +49,22 @@ function handleEquals(event) {
 
     // here we will have to reset operatorType 
     // may want to empty inputs? 
-
 }
+
+function updateCalcHistory() {
+    // might have to empty DOM div every time??
+    // AJAX GET
+    $.ajax({
+        method: 'GET',
+        url: '/calc'
+    }).then((response) => {
+        calcHistory = response;
+        console.log('in GET calc history:', calcHistory)
+    }).catch((error) => {
+        console.log('error caught:', error);
+        alert('ERROR on GET')
+    })
+}
+
+
+// Note: when updating current answer on DOM, the answer from latest calc can be the array[0].answer
